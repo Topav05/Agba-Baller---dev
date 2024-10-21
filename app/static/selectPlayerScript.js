@@ -12,7 +12,7 @@ const modeImages = {
     'Player': 'static/Images/Player.png',
     'Club': 'static/Images/Club.png',
     'Nation': 'static/Images/GreyMap.png',
-    'League': 'static/Images/leagues.png'
+    'League': 'static/Images/Leagues.png'
 };
 
 // =========================
