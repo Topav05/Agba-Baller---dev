@@ -1,0 +1,454 @@
+ /* =========================    General Styling    ========================= */
+ body {
+  font-family: Gill Sans MT, sans-serif;
+  display: flex;
+  justify-content: center;
+  background-color: #F2F2F2;
+}
+ .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the entire container */
+}
+ input[type="text"] {
+  padding-right: 4px;
+  font-family: Gill Sans MT, sans-serif;
+}
+ 
+ /* =========================      Layout Components      ========================= */      /* First Row: Align sections vertically and center horizontally */
+ .first-row {
+  display: flex;
+  gap: 25px;
+  align-items: center; /* Ensures vertical alignment of both info and mode-slider */
+  justify-content: center; /* Center horizontally */
+}
+
+/* Input Row: Center inputs with consistent gap */
+.input-row {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  justify-content: center; /* Center inputs */   }
+   
+  /* Field Container: Center and size the football pitch */   
+  .field-container {
+    width: 100%; /* Consistent width */
+    display: flex;
+    justify-content: center; /* Center the field */
+    height: auto;
+     }
+  
+   /* =========================
+    Football Pitch Styling
+    ========================= */
+     
+   .field {
+    width: 700px;
+    height: 500px;
+    background: repeating-linear-gradient(
+
+    to right,         
+      #547334,         
+      #547334 50px,       
+        #5f8439 50px,      
+           #5f8439 100px   
+               );       
+    border: 3px solid #ffffff;       
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);     
+      position: relative;     }
+  /* Pitch Details */  
+  .center-line {
+    position: absolute;
+     top: 0; 
+      left: 50%; 
+      width: 2px;
+      height: 100%;
+       background: #ffffff;
+        z-index: 0;
+}
+.center-circle { 
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  width: 100px; 
+  height: 100px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;     } 
+   /* Penalty Boxes */     
+   .left-penalty, .right-penalty {       
+    position: absolute;       
+    top: 150px;     
+      width: 100px;     
+        height: 200px;     
+          border-top: 3px solid #ffffff;     
+            border-bottom: 3px solid #ffffff;     }
+     .left-penalty {      
+       left: 0;      
+        border-right: 3px solid #ffffff;    
+       } 
+     .right-penalty {     
+        right: 0;     
+          border-left: 3px solid #ffffff;   
+          } 
+      /* 6-Yard Boxes */
+      .left-6-yard, .right-6-yard {  
+             position: absolute;     
+               top: 210px; 
+                   width: 33.333px;
+                     height: 75px;
+                      border-top: 3px solid #ffffff;
+                         border-bottom: 3px solid #ffffff;     }  
+      .left-6-yard {       
+        left: 0;      
+         border-right: 3px solid #ffffff;     
+        }      
+         .right-6-yard {    
+             right: 0;  
+             border-left: 3px solid #ffffff;     }       
+/* Goals */    
+ .goal {
+  position: absolute;
+  width: 10px;
+  height: 60px;
+  background-color: white;
+}          
+.goal.left { 
+  top: 220px;
+  left: -10px;
+}       
+.goal.right {
+  top: 220px;
+  right: -10px;
+}
+/* Corner Arcs */    
+.corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #ffffff;
+}         
+.corner.top-left {
+  top: 0;
+  left: 0;
+  border-top: none;
+  border-left: none;
+  border-bottom-right-radius: 50%;
+}      
+.corner.top-right {
+  top: 0;
+  right: 0;
+  border-top: none;
+  border-right: none;
+  border-bottom-left-radius: 50%;
+}   
+.corner.bottom-left {
+  bottom: 0; 
+  left: 0;
+  border-bottom: none;
+  border-left: none;
+  border-top-right-radius: 50%;
+}       
+.corner.bottom-right {
+  bottom: 0;
+  right: 0;
+  border-bottom: none;
+  border-right: none;
+  border-top-left-radius: 50%;
+}      
+/* Penalty Semi-Circles */
+.penalty-semi-circle {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: none;
+  overflow: hidden;
+  border: white;
+}     
+
+.penalty-semi-circle.left { 
+  top: 200px;
+  left: 50px;
+}
+
+.penalty-semi-circle.right {
+  top: 200px;
+  right: 50px;
+  transform: rotate(180deg);
+}      
+
+/* =========================      Player Styling      ========================= */ 
+.player {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 82px;
+  text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 2;
+  padding: 0px;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}     
+                                  
+.player.expanded {
+  display: inline-flex;
+  flex-direction: row;
+  width: auto;
+  padding-left: 6px;
+  padding-right: 3px;
+}  
+                                      
+.player .expanded-info {
+  display: none;
+  margin-right: 5px;
+  padding-right: 6px;
+}  
+                                          
+.player.expanded .expanded-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 5px;
+}  
+                                              
+.player.expanded .expanded-info p {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  font-size: 8px;
+  text-align: left;
+}  
+                                                  
+.player .name {
+  font-size: min(10px, 2ch);
+  font-weight: bold;
+  color: #5A4318;
+  padding: 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}    
+                                                    
+.player .player-face {
+  width: 44px;
+  height: 44px;
+}   
+                                                       
+.player .rating {
+  font-size: 15px;
+  font-weight: bold;
+  color: #5A4318;
+  padding: 5px 0;
+  width: 100%;
+}
+                                                             
+/* =========================      Info and Harmonic Mean Section      ========================= */  
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 10px;
+}   
+                                                                 
+.info {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}   
+
+.harmonic-mean {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.harmonic-mean h2 {
+  font-size: 18px;
+  margin-right: 10px;
+  color: #5A4318;
+}   
+
+.harmonic-mean p {
+  margin: 0;
+  font-weight: bold;
+}
+  /* =========================      Search Functionality      ========================= */
+.search-container {
+    display: inline-block;
+}
+.search-icon {
+    position: relative;     left: 27.5px;     top: 8px;     transform: translateY(-50%);     color: #333;
+}
+
+.searchBox {
+  width: 340.9px;
+  height: 30px;
+  font-size: 16px;
+  padding-inline-start: 30px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Search Results */
+#searchResults {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 30px;
+  position: absolute;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 300px;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#searchResults li {
+  padding: 5px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+#searchResults li:hover {
+  background-color: #f0f0f0;
+}
+
+#searchResults img {
+  width: 25px;
+  height: 25px;
+  margin-right: 8px;
+}
+
+.selected-item {
+  display: inline-flex; /* Align items in a row */
+  align-items: center; /* Vertically center the text and button */
+  justify-content: space-between; /* Space between text and button */
+  background-color: #DCE8DF;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin: 5px;
+  white-space: nowrap; /* Prevent text wrapping */
+  width: auto; /* Auto width to fit content */
+}
+
+.selected-item .player-name {
+  margin-right: 10px; /* Space between name and button */
+  white-space: nowrap; /* Prevent name wrapping */
+}
+
+.selected-item button {
+  background: none;
+  border: none;
+  color: #627F6B;
+  font-size: 14px;
+  cursor: pointer;
+  flex-shrink: 0; /* Ensure button does not shrink */
+  padding: 0;
+}
+
+#selectedItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 10px;
+  color: #476350;
+  width: 700px;
+}
+
+#selectedItems li {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================      Buttons and Inputs      ========================= */
+.input-row button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.formationBox {
+  width: 148.8px;
+  height: 30px;
+  font-size: 16px;
+  padding-inline-start: 10px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================      Mode Toggle Styling      ========================= */
+.mode-toggle-container {
+  display: flex;
+  justify-content: center;  /* Centers the mode-slider horizontally */
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.mode-slider {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 150px; /* Maintain container size */
+  height: 130px; /* Set a height to match other elements in the row */
+  position: relative; /* To position arrows relative to this container */
+  display: flex;
+  flex-direction: column;  /* Keeps image and label stacked */
+  align-items: center;  /* Horizontally center content */
+  justify-content: center;  /* Vertically center the image and label */
+}
+
+#modeLabel {
+  text-align: center;
+  margin-top: 10px;  /* Space between image and label */
+  font-size: 14px;
+  justify-content: center;
+}
+
+/* Arrow Styles */ 
+.fas.fa-chevron-left,  .fas.fa-chevron-right {     
+    font-size: 30px;
+    cursor: pointer;
+    color: #5f8439;
+    transition: color 0.3s ease;
+    position: absolute; /* Allows arrows to be outside the container */
+    top: 50%;
+    transform: translateY(-50%);
+}      
+
+.fas.fa-chevron-left {
+    left: 10px; /* Move the left arrow outside the container */
+  }
+
+.fas.fa-chevron-right {
+  right: 10px; /* Move the right arrow outside the container */
+}
+
+.fas:hover {
+    color: #3b5d25;
+}
+/* =========================      Additional Styles (if any)      ========================= */
+/* Add any additional styles here */   
