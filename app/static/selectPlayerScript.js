@@ -9,8 +9,8 @@ let currentModeIndex = 0; // 0 = Player, 1 = Club, 2 = Nation, 3 = League
 
 // Mode Images Mapping
 const modeImages = {
-    'Player': 'static/Images/player.png',
-    'Club': 'static/Images/club.png',
+    'Player': 'static/Images/Player.png',
+    'Club': 'static/Images/Club.png',
     'Nation': 'static/Images/GreyMap.png',
     'League': 'static/Images/leagues.png'
 };
@@ -146,7 +146,7 @@ async function searchItems() {
             const imageUrl = extractImageUrl(item);
             resultsHTML += `
                 <li onclick="addItem('${shortName} | ${item.index} | ${imageUrl}')">
-                    <img src="${imageUrl}" onerror="this.onerror=null;this.src='static/Images/default.png';" alt="${shortName}" style="width: 30px; height: 30px; margin-right: 10px;">
+                    <img src="${imageUrl}" onerror="this.onerror=null;this.src='static/Images/Default.png';" alt="${shortName}" style="width: 30px; height: 30px; margin-right: 10px;">
                     ${item.long_name}
                 </li>
             `;
